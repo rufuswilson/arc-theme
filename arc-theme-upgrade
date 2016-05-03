@@ -6,7 +6,7 @@
 theme_name=arc-theme
 
 # Theme name
-download_url=https://github.com/horst3180/$theme_name/archive/master.tar.gz
+download_url=https://github.com/rufuswilson/$theme_name/archive/master.tar.gz
 
 # for test purporses only (the repo needs to have this script)
 # download_url=https://github.com/leoheck/$theme_name/archive/master.tar.gz
@@ -18,14 +18,17 @@ tempdir=/tmp/$theme_name
 lightdir=/usr/share/themes/Arc
 darkerdir=/usr/share/themes/Arc-Darker
 darkdir=/usr/share/themes/Arc-Dark
+darkestdir=/usr/share/themes/Arc-Darkest
 
 userlightdir=$HOME/.themes/Arc
 userdarkerdir=$HOME/.themes/Arc-Darker
 userdarkdir=$HOME/.themes/Arc-Dark
+userdarkestdir=$HOME/.themes/Arc-Darkest
 
 userlightdir2=$HOME/local/share/themes/Arc
 userdarkerdir2=$HOME/local/share/themes/Arc-Darker
 userdarkdir2=$HOME/local/share/themes/Arc-Dark
+userdarkestdir2=$HOME/local/share/themes/Arc-Darkest
 
 #Functions
 show_error() {
@@ -85,7 +88,7 @@ install_theme() {
   rm -rf $tempdir && mkdir $tempdir && cd $tempdir
 
   # Get the sources && Remove current installation only if download and unpack are successful
-  wget $download_url && tar xf master.tar.gz && rm -rf $lightdir $darkerdir $darkdir && cd "$theme_name"-master 
+  wget $download_url && tar xf master.tar.gz && rm -rf $lightdir $darkerdir $darkdir $darkestdir && cd "$theme_name"-master 
 
   # Build and install
   ./autogen.sh --prefix=/usr
@@ -133,7 +136,7 @@ check_command automake wget pkg-config autoconf make tar
 check_root
 
 #Check if theme is installed
-check_directories $lightdir $darkerdir $darkdir
+check_directories $lightdir $darkerdir $darkdir $darkestdir
 
 echo
 read -r -p "Do you want to continue installation? [y/N] " response
