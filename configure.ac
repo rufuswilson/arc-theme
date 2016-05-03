@@ -15,6 +15,7 @@ AC_PROG_MKDIR_P
 ARC_ENABLE([LIGHT],         [light],         [Arc Light],     [disable])
 ARC_ENABLE([DARKER],        [darker],        [Arc Darker],    [disable])
 ARC_ENABLE([DARK],          [dark],          [Arc Dark],      [disable])
+ARC_ENABLE([DARKEST],       [darkest],       [Arc Darkest],   [disable])
 ARC_ENABLE([CINNAMON],      [cinnamon],      [Cinnamon],      [disable])
 ARC_ENABLE([GNOME_SHELL],   [gnome-shell],   [GNOME Shell],   [disable])
 ARC_ENABLE([GTK2],          [gtk2],          [GTK2],          [disable])
