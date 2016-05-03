@@ -1,10 +1,12 @@
 themedir        = $(datadir)/themes/Arc
 themedarkerdir  = $(datadir)/themes/Arc-Darker
 themedarkdir    = $(datadir)/themes/Arc-Dark
+themedarkestdir = $(datadir)/themes/Arc-Darkest
 
-ithemedir       = $(DESTDIR)$(themedir)
-ithemedarkerdir   = $(DESTDIR)$(themedarkerdir)
-ithemedarkdir  = $(DESTDIR)$(themedarkdir)
+ithemedir        = $(DESTDIR)$(themedir)
+ithemedarkerdir  = $(DESTDIR)$(themedarkerdir)
+ithemedarkdir    = $(DESTDIR)$(themedarkdir)
+ithemedarkestdir = $(DESTDIR)$(themedarkestdir)
 
 install-exec-hook:
 
@@ -24,6 +26,11 @@ if ENABLE_DARK
 	$(MKDIR_P) $(ithemedarkdir)
 	cp $(srcdir)/index.theme-dark $(ithemedarkdir)/index.theme
 endif # ENABLE_DARK
+
+if ENABLE_DARKEST
+	$(MKDIR_P) $(ithemedarkestdir)
+	cp $(srcdir)/index.theme-darkest $(ithemedarkestdir)/index.theme
+endif # ENABLE_DARKEST
 
 
 if ENABLE_CINNAMON
@@ -48,7 +55,7 @@ if ENABLE_DARK
 		$(ithemedarkdir)/cinnamon/cinnamon.css
 endif # ENABLE_DARK
 
-endif # ENABLE_GNOME_SHELL
+endif # ENABLE_CINNAMON
 
 
 if ENABLE_GNOME_SHELL
@@ -120,6 +127,23 @@ if ENABLE_DARK
 		$(ithemedarkdir)/gtk-2.0/gtkrc
 endif # ENABLE_DARK
 
+if ENABLE_DARKEST
+	$(MKDIR_P) $(ithemedarkestdir)/gtk-2.0
+
+	cd $(srcdir)/gtk-2.0 && cp -R \
+		menubar-toolbar \
+		*.rc \
+		$(ithemedarkestdir)/gtk-2.0
+
+	cd $(srcdir)/gtk-2.0 && cp -R \
+		assets-darkest \
+		$(ithemedarkestdir)/gtk-2.0/assets
+
+	cd $(srcdir)/gtk-2.0 && cp -R \
+		gtkrc-darkest \
+		$(ithemedarkestdir)/gtk-2.0/gtkrc
+endif # ENABLE_DARKEST
+
 endif # ENABLE_GTK2
 
 
@@ -160,6 +184,18 @@ if ENABLE_DARK
 		$(ithemedarkdir)/gtk-3.0/gtk.css
 endif # ENABLE_DARK
 
+if ENABLE_DARKEST
+	$(MKDIR_P) $(ithemedarkestdir)/gtk-3.0
+
+	cd $(srcdir)/gtk-3.0/$(GNOME_VERSION) && cp -R \
+		assets \
+		$(ithemedarkestdir)/gtk-3.0
+
+	cd $(srcdir)/gtk-3.0/$(GNOME_VERSION) && cp -R \
+		gtk-darkest.css \
+		$(ithemedarkestdir)/gtk-3.0/gtk.css
+endif # ENABLE_DARKEST
+
 if !ENABLE_TRANSPARENCY
 
 if ENABLE_LIGHT
@@ -187,6 +223,12 @@ if ENABLE_DARK
 		gtk-solid-dark.css \
 		$(ithemedarkdir)/gtk-3.0/gtk.css
 endif # ENABLE_DARK
+
+if ENABLE_DARKEST
+	cd $(srcdir)/gtk-3.0/$(GNOME_VERSION) && cp -R \
+		gtk-solid-darkest.css \
+		$(ithemedarkestdir)/gtk-3.0/gtk.css
+endif # ENABLE_DARKEST
 
 endif #!ENABLE_TRANSPARENCY
 
@@ -216,6 +258,14 @@ if ENABLE_DARK
 		mv metacity-theme-1-dark.xml metacity-theme-1.xml && \
 		mv metacity-theme-2-dark.xml metacity-theme-2.xml
 endif # ENABLE_DARK
+
+if ENABLE_DARKEST
+	cp -R $(srcdir)/metacity-1 $(ithemedarkestdir)
+
+	cd $(ithemedarkestdir)/metacity-1 && \
+		mv metacity-theme-1-darkest.xml metacity-theme-1.xml && \
+		mv metacity-theme-2-darkest.xml metacity-theme-2.xml
+endif # ENABLE_DARKEST
 
 endif # ENABLE_METACITY
 
@@ -267,6 +317,10 @@ if ENABLE_DARK
 	cp -R $(srcdir)/xfwm4-dark $(ithemedarkdir)/xfwm4
 endif # ENABLE_DARK
 
+if ENABLE_DARKEST
+	cp -R $(srcdir)/xfwm4-darkest $(ithemedarkestdir)/xfwm4
+endif # ENABLE_DARKEST
+
 endif # ENABLE_XFWM
 
 
@@ -281,6 +335,10 @@ if ENABLE_DARK
 	rm -rf $(ithemedarkdir)
 endif # ENABLE_DARK
 
+if ENABLE_DARKEST
+	rm -rf $(ithemedarkestdir)
+endif # ENABLE_DARKEST
+
 
 EXTRA_DIST = $(srcdir)/cinnamon \
 	     $(srcdir)/gnome-shell \
@@ -291,6 +349,8 @@ EXTRA_DIST = $(srcdir)/cinnamon \
 	     $(srcdir)/xfce-notify-4.0 \
 	     $(srcdir)/xfwm4 \
 	     $(srcdir)/xfwm4-dark \
+	     $(srcdir)/xfwm4-darkest \
 	     $(srcdir)/index.theme \
 	     $(srcdir)/index.theme-darker \
-	     $(srcdir)/index.theme-dark
+	     $(srcdir)/index.theme-dark \
+	     $(srcdir)/index.theme-darkest
