@@ -16,6 +16,10 @@ Arc is a flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell w
 
 ![A screenshot of the Arc-Dark theme](http://i.imgur.com/5AGlCnA.png)
 
+#####Arc-Darkest
+
+![A screenshot of the Arc-Darkest theme](To be added)
+
 
 ### Requirements
 
@@ -46,9 +50,9 @@ If your distribution isn't listed, please check the requirements yourself.
 
 **Important:** Remove all older versions of the theme from your system before you proceed any further.
 
-    sudo rm -rf /usr/share/themes/{Arc,Arc-Darker,Arc-Dark}
-    rm -rf ~/.local/share/themes/{Arc,Arc-Darker,Arc-Dark}
-    rm -rf ~/.themes/{Arc,Arc-Darker,Arc-Dark}
+    sudo rm -rf /usr/share/themes/{Arc,Arc-Darker,Arc-Dark,Arc-Darkest}
+    rm -rf ~/.local/share/themes/{Arc,Arc-Darker,Arc-Dark,Arc-Darkest}
+    rm -rf ~/.themes/{Arc,Arc-Darker,Arc-Dark,Arc-Darkest}
 
 #### Packages
 
@@ -100,6 +104,7 @@ Other options to pass to autogen.sh are
     --disable-light            disable Arc Light support
     --disable-darker           disable Arc Darker support
     --disable-dark             disable Arc Dark support
+    --disable-darkest          disable Arc Darkest support
     --disable-cinnamon         disable Cinnamon support
     --disable-gnome-shell      disable GNOME Shell support
     --disable-gtk2             disable GTK2 support
@@ -113,7 +118,7 @@ Other options to pass to autogen.sh are
                                Note: Normally the correct version is detected automatically and this
                                option should not be needed.
 
-After the installation is complete you can activate the theme with `gnome-tweak-tool` or a similar program by selecting `Arc`, `Arc-Darker` or `Arc-Dark` as Window/GTK+ theme and `Arc` or `Arc-Dark` as Gnome-Shell and Xfce-Notify theme.
+After the installation is complete you can activate the theme with `gnome-tweak-tool` or a similar program by selecting `Arc`, `Arc-Darker`, `Arc-Dark` or `Arc-Darkest` as Window/GTK+ theme and `Arc`, `Arc-Dark` or `Arc-Darkest` as Gnome-Shell and Xfce-Notify theme.
 
 **Uninstall the theme**
 
@@ -123,7 +128,7 @@ Run
 
 from the same directory as this README resides in, or
 
-    sudo rm -rf /usr/share/themes/{Arc,Arc-Darker,Arc-Dark}
+    sudo rm -rf /usr/share/themes/{Arc,Arc-Darker,Arc-Dark,Arc-Darkest}
 
 ### Extras
 
